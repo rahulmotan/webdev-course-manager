@@ -1,0 +1,9 @@
+cbody{
+    background-color: lightgray;
+}
+icon-hov{
+    cursor: pointer;
+}
+tr:hover{
+    background-color: dodgerblue;
+}
