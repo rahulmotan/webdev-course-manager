@@ -47,17 +47,16 @@ class CourseService {
     }
 
     findCourseById(id) {
-        return fetch(COURSE_API_URL + "/" + id, {
-            method: "GET"
-        }).then(function (response) {
-            return response.json();
-        })
+        return fetch(COURSE_API_URL + "/" + id)
+            .then(function (response) {
+                return response.json();
+            })
     }
 
-    updateCourse(course){
+    updateCourse(course) {
         return fetch(COURSE_API_URL, {
             body: JSON.stringify(course),
-            headers:{
+            headers: {
                 'Content-Type': 'application/json'
             },
             method: 'PUT'

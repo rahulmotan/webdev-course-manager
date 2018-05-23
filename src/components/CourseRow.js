@@ -1,6 +1,7 @@
 import React from 'react'
 import "../css/coursebody.style.css";
 import CourseService from "../services/CourseService";
+import {Link} from 'react-router-dom'
 
 export default class CourseRow
     extends React.Component {
@@ -26,12 +27,13 @@ export default class CourseRow
             <tr id={this.props.course.id} key={this.props.course.id}>
                 <td>
                     <div>
-                        <i className="fa fa-files-o pr-2"></i><span
-                        className="font-weight-bold text-black-50">{this.props.course.title}</span><i
+                        <i className="fa fa-files-o pr-2"></i><Link to={`/course/${this.props.course.id}`}><span
+                        className="font-weight-bold text-black-50">{this.props.course.title}</span></Link><i
                         className="fa fa-times fa-2x float-right text-dark" style={{"hover": "cursor"}}
                         onClick={() => {
                             this.props.deleteCourse(this.props.course.id)
                         }}></i></div>
+
                 </td>
             </tr>
         );
