@@ -25,19 +25,19 @@ export default class CourseList
         console.log("delete" + id);
         this.courseService.deleteCourse(id).then(function (response) {
                 if (response.ok) {
-                    alert("Course deleted!")
+                    alert("Course deleted!");
                 }
             }
         ).then(() => {
-            this.findAllCourses()
+            this.findAllCourses();
         });
     }
 
     findAllCourses() {
         this.courseService.findAllCourses()
             .then((courses) => {
-                console.log(courses)
-                this.setState({courses: courses})
+                console.log(courses);
+                this.setState({courses: courses});
             })
     }
 

@@ -3,7 +3,7 @@ const MODULE_URL = 'http://localhost:8080/api/module';
 
 let _singleton = Symbol();
 
-export default class ModuleServiceClient {
+export default class ModuleService {
     constructor(singletonToken) {
         if (singletonToken !== _singleton) {
             throw new Error('Singleton!!!');
@@ -32,15 +32,15 @@ export default class ModuleServiceClient {
                 method: 'POST'
             }).then(function (response) {
             return response.json();
-        })
+        });
     }
 
     deleteModule(id) {
         return fetch(MODULE_URL + "/" + id, {
             method: 'DELETE'
-        }).then(function (response) {
+        }).then(function (response){
             return response;
-        })
+        });
     }
 
 }
