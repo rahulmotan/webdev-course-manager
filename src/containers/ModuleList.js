@@ -100,12 +100,8 @@ export default class ModuleList
                             <h6 className="d-md-inline-flex py-2 pl-1 m-auto position-relative">{this.state.course.title}</h6>
                         </div>
                     </div>
-                    <div className="col-md-3 py-2 bg-dark">
-                        <ModuleList courseId={this.state.courseId}/>
-                    </div>
-                    <div className="col-md-9"></div>
                     <div className="row">
-                        <div className="col-md-4">
+                        <div className="col-md-4 py-2 bg-dark">
                             <input type="text" onChange={this.titleChanged}
                                    value={this.state.module.title}
                                    placeholder="title"
@@ -120,7 +116,7 @@ export default class ModuleList
                             </ul>
                         </div>
                         <div className="col-md-8">
-                            <Route path="/course/:courseId/module/:moduleId" component={ModuleEditor}/>
+                            <Route path="/course/:courseId/module/:moduleId" component={ModuleEditor}></Route>
                         </div>
                     </div>
                 </div>

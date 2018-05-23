@@ -24,7 +24,7 @@ export default class CourseRow
 
     render() {
         return (
-            <tr id={this.props.course.id} key={this.props.course.id}>
+            <tr id={this.props.course.id} key={this.props.courseId}>
                 <td>
                     <div>
                         <i className="fa fa-files-o pr-2"></i><Link to={`/course/${this.props.course.id}`}><span

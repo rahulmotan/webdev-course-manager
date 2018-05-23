@@ -36,7 +36,9 @@ export default class CourseEditor
 
     render() {
         return (
-            <ModuleList courseId={this.state.courseId} course={this.state.course}/>
+            <div>
+                <ModuleList courseId={this.state.courseId} course={this.state.course}/>
+            </div>
         );
     }
 }

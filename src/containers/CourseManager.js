@@ -1,5 +1,4 @@
 import React from 'react'
-//import {BrowserRouter as Router, Route, Link} from 'react-router-dom'
 import CourseList from "./CourseList"
 import CourseEditor from "./CourseEditor"
 import {BrowserRouter as Router, Route} from 'react-router-dom'
