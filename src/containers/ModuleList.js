@@ -109,7 +109,7 @@ export default class ModuleList
                             {this.renderListOfModules()}
                         </ul>
                     </div>
-                    <div className="col-md-8 pl-0 bg-dark mr-0">
+                    <div className="col-md-8 px-0 mr-0">
                         <Route path="/course/:courseId/module/:moduleId" component={ModuleEditor}></Route>
                     </div>
 
