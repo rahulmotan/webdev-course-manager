@@ -15,6 +15,7 @@ export default class CourseList
         this.deleteCourse = this.deleteCourse.bind(this);
         this.titleChanged = this.titleChanged.bind(this);
         this.createCourse = this.createCourse.bind(this);
+        this.renderSorted = this.renderSorted.bind(this);
     }
 
     componentDidMount() {
@@ -104,7 +105,7 @@ export default class CourseList
                     </nav>
                     <CourseListHeader sort={this.renderSorted}/>
                 </header>
-                <div className="container p-0" style={{"background": "white", "padding-bottom": "30%"}}>
+                <div className="container p-0" style={{"background": "white", "min-height":"80vh"}}>
                     <table className="table table-hover table-responsive-md p-0">
                         <tbody>
                         {this.renderCourseRows()}

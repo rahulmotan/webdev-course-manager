@@ -9,7 +9,7 @@ import './css/coursebody.style.css'
 import CourseManager from "./containers/CourseManager";
 
 ReactDOM.render(
-    <div style={{"background-color": "lightgray"}}>
+    <div style={{"background-color": "lightgray", "min-height": "100vh", "overflow-x":"hidden"}}>
         <CourseManager/>
     </div>, document.getElementById('root'));
 
