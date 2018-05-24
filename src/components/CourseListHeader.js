@@ -2,6 +2,9 @@ import React from 'react'
 
 export default class CourseListHeader
     extends React.Component {
+    constructor(){
+        super();
+    }
     render() {
         return (
             <div className="row flex-row justify-content-between bg-light">

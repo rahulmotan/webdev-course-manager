@@ -64,6 +64,13 @@ class CourseService {
             return response.json();
         })
     }
+
+    getSorted() {
+        return fetch(COURSE_API_URL + "/sorted")
+            .then(function (response) {
+                return response.json();
+            })
+    }
 }
 
 export default CourseService;

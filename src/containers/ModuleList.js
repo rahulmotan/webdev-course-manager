@@ -55,7 +55,7 @@ export default class ModuleList
             .then(() => {
                 this.findAllModulesForCourse(this.state.courseId);
             });
-
+        this.setState({module:{title:''}});
     }
 
     titleChanged(event) {
@@ -90,7 +90,7 @@ export default class ModuleList
         return (
             <Router>
                 <div className="row">
-                    <div className="col-md-4 bg-dark pt-0 pb-2" style={{"padding-bottom": "100%"}}>
+                    <div className="col-md-4 bg-dark pt-0 pb-2" style={{"min-height":"100vh"}}>
                         <div className="d-flex flex-row text-light">
                             <div className=" ml-0 p-2 my-auto">
                                 <button className="btn btn-outline-secondary border-0 m-0"><i

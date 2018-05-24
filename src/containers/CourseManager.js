@@ -14,9 +14,7 @@ export default class CourseManager
         return (
             <Router>
                 <div style={{
-                    "background-color": "lightgrey",
-                    "padding-bottom": "30%",
-                    "overflow-y": "hidden",
+                    "background-color": "lightgrey"
                 }}>
                     <Route path="/courses" component={CourseList}></Route>
                     <Route path="/course/:courseId" component={CourseEditor}></Route>

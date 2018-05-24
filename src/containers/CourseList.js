@@ -70,6 +70,13 @@ export default class CourseList
             });
     }
 
+    renderSorted() {
+        this.courseService.getSorted()
+            .then((courses) => {
+                this.setState({courses: courses});
+            });
+    }
+
     render() {
         return (
             <div>
@@ -95,7 +102,7 @@ export default class CourseList
                                                                  }}></i></span>
                         </div>
                     </nav>
-                    <CourseListHeader/>
+                    <CourseListHeader sort={this.renderSorted}/>
                 </header>
                 <div className="container p-0" style={{"background": "white", "padding-bottom": "30%"}}>
                     <table className="table table-hover table-responsive-md p-0">

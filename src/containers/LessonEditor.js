@@ -1,28 +1,33 @@
 import React from 'react'
-import LessonTabs from "./LessonTabs";
+import TopicTabs from "./TopicTabs";
 
-export default class ModuleEditor
-    extends React.Component {
+export default class LessonEditor extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            moduleId: '',
             courseId: '',
-            modules: []
+            moduleId: '',
+            lessonId: ''
         };
-
         this.setModuleId = this.setModuleId.bind(this);
         this.setCourseId = this.setCourseId.bind(this);
+        this.setLessonId = this.setLessonId.bind(this);
     }
 
     componentDidMount() {
         this.setModuleId(this.props.match.params.moduleId);
         this.setCourseId(this.props.match.params.courseId);
+        this.setLessonId(this.props.match.params.lessonId);
     }
 
     componentWillReceiveProps(newProps) {
         this.setCourseId(newProps.match.params.courseId);
         this.setModuleId(newProps.match.params.moduleId);
+        this.setLessonId(newProps.match.params.lessonId);
+    }
+
+    setLessonId(lessonId) {
+        this.setState({lessonId: lessonId});
     }
 
     setModuleId(moduleId) {
@@ -35,9 +40,8 @@ export default class ModuleEditor
 
     render() {
         return (
-            <div className="my-auto">
-                <LessonTabs moduleId={this.state.moduleId} courseId={this.state.courseId}/>
-            </div>
+            <TopicTabs lessonId={this.state.lessonId} courseId={this.state.courseId}
+                       moduleId={this.state.moduleId}/>
         );
     }
 }
