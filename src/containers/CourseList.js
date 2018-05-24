@@ -22,21 +22,24 @@ export default class CourseList
     }
 
     deleteCourse(id) {
-        console.log("delete" + id);
-        this.courseService.deleteCourse(id).then(function (response) {
-                if (response.ok) {
-                    alert("Course deleted!");
+        let selection = window.confirm("Are you sure you want to delete this?");
+        if (selection) {
+            this.courseService.deleteCourse(id).then(function (response) {
+                    if (response.ok) {
+                        alert("Course deleted!");
+                    }
                 }
-            }
-        ).then(() => {
-            this.findAllCourses();
-        });
+            ).then(() => {
+                this.findAllCourses();
+            });
+        } else {
+            return;
+        }
     }
 
     findAllCourses() {
         this.courseService.findAllCourses()
             .then((courses) => {
-                console.log(courses);
                 this.setState({courses: courses});
             })
     }
@@ -55,7 +58,7 @@ export default class CourseList
 
     titleChanged(event) {
         console.log(event.target.value);
-        let date = new Date().toISOString();
+        let date = new Date().toUTCString();
         let created = date.split('T')[0];
         this.setState({course: {title: event.target.value, created: created, modified: created}});
     }

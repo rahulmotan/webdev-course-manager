@@ -64,14 +64,18 @@ export default class ModuleList
     }
 
     deleteModuleItem(id) {
-        console.log(id);
-        this.moduleService.deleteModule(id)
-            .then(function (response) {
-                if (response.ok)
-                    alert("Module Deleted");
-            }).then(() => {
-            this.findAllModulesForCourse(this.state.courseId);
-        });
+        let selection = window.confirm("Are you sure you want to delete this?");
+        if (selection) {
+            this.moduleService.deleteModule(id)
+                .then(function (response) {
+                    if (response.ok)
+                        alert("Module Deleted");
+                }).then(() => {
+                this.findAllModulesForCourse(this.state.courseId);
+            });
+        } else {
+            return;
+        }
     }
 
     renderListOfModules() {
@@ -86,7 +90,7 @@ export default class ModuleList
         return (
             <Router>
                 <div className="row">
-                    <div className="col-md-4 bg-dark pt-0 pb-2" style={{"padding-bottom":"100%"}}>
+                    <div className="col-md-4 bg-dark pt-0 pb-2" style={{"padding-bottom": "100%"}}>
                         <div className="d-flex flex-row text-light">
                             <div className=" ml-0 p-2 my-auto">
                                 <button className="btn btn-outline-secondary border-0 m-0"><i

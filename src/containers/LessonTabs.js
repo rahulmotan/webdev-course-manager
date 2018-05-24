@@ -72,10 +72,15 @@ export default class LessonTabs
     }
 
     deleteLesson(lessonId) {
-        this.lessonService.deleteLesson(lessonId)
-            .then(() => {
-                this.findAllLessonsForModule(this.state.courseId, this.state.moduleId);
-            })
+        let selection = window.confirm("Are you sure you want to delete this?");
+        if (selection) {
+            this.lessonService.deleteLesson(lessonId)
+                .then(() => {
+                    this.findAllLessonsForModule(this.state.courseId, this.state.moduleId);
+                })
+        } else {
+            return;
+        }
     }
 
     renderLessonTabs() {

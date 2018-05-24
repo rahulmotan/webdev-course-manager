@@ -10,22 +10,10 @@ export default class CourseRow
         this.courseService = CourseService.instance;
     }
 
-    deleteCourse(event) {
-        let currentTarget = event.currentTarget;
-        let value = currentTarget.attributes[1].value;
-        this.courseService.deleteCourse(value).then(function (response) {
-                if (response.ok) {
-                    alert("course deleted!")
-                }
-            }
-        );
-        return;
-    }
-
     render() {
         return (
             <tr id={this.props.course.id} key={this.props.courseId}>
-                <td>
+                <td className="w-50">
                     <div>
                         <i className="fa fa-files-o pr-2"></i>
                         <Link to={`/course/${this.props.course.id}`}>
@@ -36,7 +24,7 @@ export default class CourseRow
                 <td>
                     me
                 </td>
-                <td className="text-center">
+                <td>
                     <div>
                         <span className="font-weight-bold text-black-50">{this.props.course.modified}</span>
                         <i className="fa fa-times fa-2x float-right text-dark" style={{"hover": "cursor"}}
