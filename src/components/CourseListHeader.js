@@ -16,7 +16,9 @@ export default class CourseListHeader
                 <div className="col-md-2 py-2 text-black-50 text-center"><span><strong>Last Modified</strong></span>
                 </div>
                 <div className="col-md-2 py-2 text-black-50 text-center"><span className="float-left px-2"><i
-                    className="fa fa-th fa-2x mr-4"></i></span>
+                    className="fa fa-th fa-2x mr-4" onClick={()=>{
+                        this.props.isGrid()
+                }}></i></span>
                     <span><i
                         className="fa fa-sort-alpha-asc fa-2x mr-2" onClick={() => {
                         this.props.sort()
