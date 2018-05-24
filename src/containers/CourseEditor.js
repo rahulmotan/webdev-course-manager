@@ -36,7 +36,7 @@ export default class CourseEditor
 
     render() {
         return (
-            <div>
+            <div className="container-fluid">
                 <ModuleList courseId={this.state.courseId} course={this.state.course}/>
             </div>
         );

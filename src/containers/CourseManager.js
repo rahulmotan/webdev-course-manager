@@ -13,7 +13,7 @@ export default class CourseManager
     render() {
         return (
             <Router>
-                <div style={{"background-color": "lightgrey", "padding-bottom": "100%"}}>
+                <div style={{"background-color": "lightgrey", "padding-bottom": "100%", "overflow": "hidden"}}>
                     <Route path="/courses" component={CourseList}></Route>
                     <Route path="/course/:courseId" component={CourseEditor}></Route>
                 </div>

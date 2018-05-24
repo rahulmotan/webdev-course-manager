@@ -1,4 +1,5 @@
 import React from 'react'
+import LessonTabs from "./LessonTabs";
 
 export default class ModuleEditor
     extends React.Component {
@@ -7,34 +8,36 @@ export default class ModuleEditor
         this.state = {
             moduleId: '',
             courseId: '',
-            lesson: '',
-            lessons: []
-        };
+            modules: []
+        }
+
         this.setModuleId = this.setModuleId.bind(this);
         this.setCourseId = this.setCourseId.bind(this);
     }
 
     componentDidMount() {
-        this.setModuleId(this.props.moduleId);
-        this.setCourseId(this.props.courseId);
-        this.findAllLessonsForModule(this.props.module.id);
+        this.setModuleId(this.props.match.params.moduleId);
+        this.setCourseId(this.props.match.params.courseId);
     }
 
-    setModuleId() {
-
+    componentWillReceiveProps(newProps) {
+        this.setCourseId(newProps.match.params.courseId);
+        this.setModuleId(newProps.match.params.moduleId);
     }
 
-    findAllLessonsForModule() {
-
+    setModuleId(moduleId) {
+        this.setState({moduleId: moduleId});
     }
 
-    componentWillRecieveProps(newProps) {
-
+    setCourseId(courseId) {
+        this.setState({courseId: courseId});
     }
 
     render() {
         return (
-            <h1>Module Editor</h1>
+            <div className="my-auto">
+                <LessonTabs moduleId={this.state.moduleId} courseId={this.state.courseId}/>
+            </div>
         );
     }
 }

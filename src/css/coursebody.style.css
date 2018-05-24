@@ -1,7 +1,15 @@
+html, body {
+    height: 100%;
+}
+.container {
+    min-height: 100%;
+    overflow: hidden;
+}
+
 cbody{
     background-color: lightgray;
 }
-icon-hov{
+.icon-hov{
     cursor: pointer;
 }
 tr:hover{
