@@ -8,7 +8,7 @@ export default class CourseList
     constructor() {
         super();
         this.state = {
-            course: {title: ""},
+            course: {title: "", created: '', modified: ''},
             courses: []
         };
         this.courseService = CourseService.instance;
@@ -55,11 +55,12 @@ export default class CourseList
 
     titleChanged(event) {
         console.log(event.target.value);
-        this.setState({course: {title: event.target.value}});
+        let date = new Date().toISOString();
+        let created = date.split('T')[0];
+        this.setState({course: {title: event.target.value, created: created, modified: created}});
     }
 
     createCourse(event) {
-        console.log('create Course');
         this.courseService.createCourse(this.state.course)
             .then(() => {
                 this.findAllCourses();
@@ -94,7 +95,7 @@ export default class CourseList
                     <CourseListHeader/>
                 </header>
                 <div className="container p-0" style={{"background": "white", "padding-bottom": "30%"}}>
-                    <table className="table table-hover table-responsive-md table-bordered p-0">
+                    <table className="table table-hover table-responsive-md p-0">
                         <tbody>
                         {this.renderCourseRows()}
                         </tbody>
