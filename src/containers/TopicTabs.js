@@ -1,6 +1,8 @@
 import React from 'react'
 import TopicService from "../services/TopicService";
 import TopicListItem from "../components/TopicListItem";
+import {MyComponent} from "./WidgetEditor";
+import {WidgetHeader} from "../components/WidgetHeader";
 
 export default class TopicTabs
     extends React.Component {
@@ -122,6 +124,8 @@ export default class TopicTabs
                         </div>
                     </div>
                 </div>
+                <WidgetHeader/>
+                <MyComponent/>
             </div>
 
         );
