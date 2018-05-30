@@ -1,8 +1,10 @@
 import React from 'react'
 import TopicService from "../services/TopicService";
 import TopicListItem from "../components/TopicListItem";
-import {MyComponent} from "./WidgetEditor";
+import {Route} from 'react-router-dom'
 import {WidgetHeader} from "../components/WidgetHeader";
+import TopicEditor from "./TopicEditor";
+
 
 export default class TopicTabs
     extends React.Component {
@@ -90,7 +92,8 @@ export default class TopicTabs
 
     renderTopicTabs() {
         let topics = this.state.topics.map(function (topic) {
-            return <TopicListItem topic={topic} key={topic.id} delete={this.deleteTopic}/>
+            return <TopicListItem topic={topic} key={topic.id} delete={this.deleteTopic} moduleId={this.state.moduleId}
+                                  courseId={this.state.courseId} lessonId={this.state.lessonId}/>
         }, this);
         return topics;
     }
@@ -124,8 +127,11 @@ export default class TopicTabs
                         </div>
                     </div>
                 </div>
-                <WidgetHeader/>
-                <MyComponent/>
+
+                <Route path={`/course/:courseId/module/:moduleId/lesson/:lessonId/topic/:topicId`}
+                       component={WidgetHeader}/>
+                <Route path={`/course/:courseId/module/:moduleId/lesson/:lessonId/topic/:topicId`}
+                       component={TopicEditor}/>
             </div>
 
         );

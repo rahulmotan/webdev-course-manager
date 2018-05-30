@@ -1,7 +1,7 @@
 import React from 'react'
 import ModuleService from "../services/ModuleService";
 import ModuleListItem from "../components/ModuleListItem";
-import {BrowserRouter as Router, Route} from 'react-router-dom'
+import {Route} from 'react-router-dom'
 import ModuleEditor from "./ModuleEditor";
 
 export default class ModuleList
@@ -55,7 +55,7 @@ export default class ModuleList
             .then(() => {
                 this.findAllModulesForCourse(this.state.courseId);
             });
-        this.setState({module:{title:''}});
+        this.setState({module: {title: ''}});
     }
 
     titleChanged(event) {
@@ -88,37 +88,34 @@ export default class ModuleList
 
     render() {
         return (
-            <Router>
-                <div className="row">
-                    <div className="col-md-4 bg-dark pt-0 pb-2" style={{"min-height":"100vh"}}>
-                        <div className="d-flex flex-row text-light">
-                            <div className=" ml-0 p-2 my-auto">
-                                <button className="btn btn-outline-secondary border-0 m-0"><i
-                                    className="fa fa-times fa-2x p-0 m-auto"></i></button>
-                            </div>
-                            <div className="p-2 my-auto">
-                                <h6 className="mt-2">{this.state.course.title}</h6>
-                            </div>
+            <div className="row">
+                <div className="col-md-4 bg-dark pt-0 pb-2" style={{"min-height": "100vh"}}>
+                    <div className="d-flex flex-row text-light">
+                        <div className=" ml-0 p-2 my-auto">
+                            <button className="btn btn-outline-secondary border-0 m-0"><i
+                                className="fa fa-times fa-2x p-0 m-auto"></i></button>
                         </div>
-                        <input type="text" onChange={this.titleChanged}
-                               value={this.state.module.title}
-                               placeholder="title"
-                               className="form-control"/>
-                        <button onClick={this.createModule}
-                                className="btn btn-primary btn-block bg-secondary border-0 py-2">
-                            <i className="fa fa-plus"></i>
-                        </button>
-                        <br/>
-                        <ul className="list-group">
-                            {this.renderListOfModules()}
-                        </ul>
+                        <div className="p-2 my-auto">
+                            <h6 className="mt-2">{this.state.course.title}</h6>
+                        </div>
                     </div>
-                    <div className="col-md-8 px-0 mr-0">
-                        <Route path="/course/:courseId/module/:moduleId" component={ModuleEditor}></Route>
-                    </div>
-
+                    <input type="text" onChange={this.titleChanged}
+                           value={this.state.module.title}
+                           placeholder="title"
+                           className="form-control"/>
+                    <button onClick={this.createModule}
+                            className="btn btn-primary btn-block bg-secondary border-0 py-2">
+                        <i className="fa fa-plus"></i>
+                    </button>
+                    <br/>
+                    <ul className="list-group">
+                        {this.renderListOfModules()}
+                    </ul>
                 </div>
-            </Router>
+                <div className="col-md-8 px-0 mr-0 bg-light">
+                    <Route path="/course/:courseId/module/:moduleId" component={ModuleEditor}></Route>
+                </div>
+            </div>
         )
     }
 }

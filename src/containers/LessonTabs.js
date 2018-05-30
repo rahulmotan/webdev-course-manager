@@ -1,5 +1,5 @@
 import React from 'react'
-import {BrowserRouter as Router, Route} from 'react-router-dom'
+import {Route} from 'react-router-dom'
 import LessonService from "../services/LessonService";
 import LessonListItem from "../components/LessonListItem";
 import LessonEditor from "./LessonEditor";
@@ -98,29 +98,27 @@ export default class LessonTabs
 
     render() {
         return (
-            <Router>
-                <div>
-                    <nav className="navbar navbar-expand-lg nav-pills mt-0 mb-0 navbar-light bg-dark pt-2">
-                        <div className="form-inline">
-                            <div className="input-group">
-                                <input type="text" onChange={this.titleChanged} value={this.state.lesson.title}
-                                       placeholder="Add Lesson"
-                                       className="form-control"/>
-                                <div className="input-group-append">
-                                    <button onClick={this.createLesson}
-                                            className="btn btn-primary btn-block bg-secondary border-0 py-2">
-                                        <i className="fa fa-plus"></i>
-                                    </button>
-                                </div>
+            <div>
+                <nav className="navbar navbar-expand-lg nav-pills mt-0 mb-0 navbar-light bg-dark pt-2">
+                    <div className="form-inline">
+                        <div className="input-group">
+                            <input type="text" onChange={this.titleChanged} value={this.state.lesson.title}
+                                   placeholder="Add Lesson"
+                                   className="form-control"/>
+                            <div className="input-group-append">
+                                <button onClick={this.createLesson}
+                                        className="btn btn-primary btn-block bg-secondary border-0 py-2">
+                                    <i className="fa fa-plus"></i>
+                                </button>
                             </div>
                         </div>
-                        <ul className="nav nav-pills nav-fill">
-                            {this.renderLessonTabs()}
-                        </ul>
-                    </nav>
-                    <Route path={"/course/:courseId/module/:moduleId/lesson/:lessonId"} component={LessonEditor}></Route>
-                </div>
-            </Router>
+                    </div>
+                    <ul className="nav nav-pills nav-fill">
+                        {this.renderLessonTabs()}
+                    </ul>
+                </nav>
+                <Route path={"/course/:courseId/module/:moduleId/lesson/:lessonId"} component={LessonEditor}></Route>
+            </div>
         );
 
     }
