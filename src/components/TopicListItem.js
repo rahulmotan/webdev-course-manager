@@ -9,11 +9,21 @@ export default class TopicListItem
 
     render() {
         return (
-            <div id={this.props.topic.id} className="card pt-3 bg-secondary">
-                <div className="card-body text-center p-0">
-                    <h5 className="card-title"><Link
-                        to={`/course/${this.props.courseId}/module/${this.props.moduleId}/lesson/${this.props.lessonId}/topic/${this.props.topic.id}`}>{this.props.topic.title}</Link>
+            <div id={this.props.topic.id} className="d-inline bg-dark mr-1">
+                <div className="input-group">
+                    <h5 className="my-auto px-2">
+                        <Link
+                            to={`/course/${this.props.courseId}/module/${this.props.moduleId}/lesson/${this.props.lessonId}/topic/${this.props.topic.id}`}>
+                            {this.props.topic.title}</Link>
                     </h5>
+                    <div className="input-group-append">
+                        <button className="btn btn-dark pl-2">
+                            <i className="fa fa-times"
+                               onClick={() => {
+                                   this.props.delete(this.props.topic.id)
+                               }}></i>
+                        </button>
+                    </div>
                 </div>
             </div>
         )

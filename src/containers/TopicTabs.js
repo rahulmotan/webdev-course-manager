@@ -122,9 +122,7 @@ export default class TopicTabs
                 <div className="row"></div>
                 <div className="container">
                     <div className="row">
-                        <div className="card-columns">
                             {this.renderTopicTabs()}
-                        </div>
                     </div>
                 </div>
                 <Route path={`/course/:courseId/module/:moduleId/lesson/:lessonId/topic/:topicId`}
