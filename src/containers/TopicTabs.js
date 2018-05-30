@@ -2,8 +2,8 @@ import React from 'react'
 import TopicService from "../services/TopicService";
 import TopicListItem from "../components/TopicListItem";
 import {Route} from 'react-router-dom'
-import {WidgetHeader} from "../components/WidgetHeader";
 import TopicEditor from "./TopicEditor";
+import "../css/widget.style.template.css"
 
 
 export default class TopicTabs
@@ -127,9 +127,6 @@ export default class TopicTabs
                         </div>
                     </div>
                 </div>
-
-                <Route path={`/course/:courseId/module/:moduleId/lesson/:lessonId/topic/:topicId`}
-                       component={WidgetHeader}/>
                 <Route path={`/course/:courseId/module/:moduleId/lesson/:lessonId/topic/:topicId`}
                        component={TopicEditor}/>
             </div>

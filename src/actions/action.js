@@ -20,8 +20,18 @@ export const findAllWidgetsByTopic = (dispatch, topicId) => (
         })))
 );
 
-export const saveAllWidgets = (dispatch) => (
-    dispatch({type: Constants.actions.widgets.SAVE_ALL})
+export const saveAllWidgets = (widgets, topicId, dispatch) => (
+    fetch(Constants.uri.widgets.SAVE.replace('TID', topicId), {
+        method: 'POST',
+        body: JSON.stringify(widgets),
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    }).then(response => (response.json()))
+        .then(widgets => (dispatch({
+            type: Constants.actions.widgets.FIND_BY_TOPIC,
+            widgets: widgets
+        })))
 );
 
 export const previewWidgets = dispatch => (
@@ -32,7 +42,10 @@ export const addWidget = (dispatch) => (
 );
 
 export const deleteWidget = (id, dispatch) => (
-    dispatch({type: Constants.actions.widgets.DELETE, id: id})
+    dispatch({
+        type: Constants.actions.widgets.DELETE,
+        id: id
+    })
 );
 
 export const changeWidget = (id, selectElement, dispatch) => (
@@ -41,3 +54,72 @@ export const changeWidget = (id, selectElement, dispatch) => (
         id: id,
         widgetType: selectElement.value
     }));
+
+export const changeHeadingSize = (id, value, dispatch) => (
+    dispatch({
+        type: Constants.actions.widgets.HEADING_SIZE,
+        id: id,
+        size: value
+    })
+);
+export const changeHeadingText = (id, newText, dispatch) => (
+    dispatch({
+        type: Constants.actions.widgets.HEADING_TEXT,
+        id: id,
+        newText: newText
+    })
+);
+
+export const changeWidgetName = (id, newName, dispatch) => (
+    dispatch({
+        type: Constants.actions.widgets.CHANGE_WIDGET_NAME,
+        id: id,
+        name: newName
+    })
+);
+
+export const changeImageUrl = (id, newLink, dispatch) => (
+    dispatch({
+        type: Constants.actions.widgets.CHANGE_IMAGE_LINK,
+        id: id,
+        src: newLink
+    })
+);
+export const changeListItems = (id, items, dispatch) => {
+    dispatch({
+        type: Constants.actions.widgets.CHANGE_LIST_ITEMS,
+        id: id,
+        listItems: items
+    })
+};
+
+export const changeListType = (id, type, dispatch) => {
+    dispatch({
+        type: Constants.actions.widgets.CHANGE_LIST_TYPE,
+        id: id,
+        listType: type
+    })
+};
+export const changeParagraphText = (id, text, dispatch) => {
+    dispatch({
+        type: Constants.actions.widgets.CHANGE_PARAGRAPH_TEXT,
+        id: id,
+        text: text
+    })
+};
+
+export const changeLinkUrl = (id, href, dispatch) => {
+    dispatch({
+        type: Constants.actions.widgets.CHANGE_LINK,
+        id: id,
+        href: href
+    })
+};
+
+export const changeLinkText = (id, text, dispatch) => {
+    dispatch({
+        type: Constants.actions.widgets.CHANGE_LINK_TEXT,
+        id: id,
+        text: text
+    })
+};

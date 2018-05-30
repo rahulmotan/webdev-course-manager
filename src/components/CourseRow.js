@@ -13,7 +13,7 @@ export default class CourseRow
     render() {
         return (
             <tr id={this.props.course.id} key={this.props.courseId}>
-                <td style={{"width":"50%"}}>
+                <td style={{"width": "50%"}}>
                     <div>
                         <i className="fa fa-files-o pr-2"></i>
                         <Link to={`/course/${this.props.course.id}`}>
@@ -21,7 +21,7 @@ export default class CourseRow
                         </Link>
                     </div>
                 </td>
-                <td style={{"width":"14%"}}>
+                <td style={{"width": "14%"}}>
                     me
                 </td>
                 <td>
