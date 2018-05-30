@@ -2,7 +2,6 @@ import React from 'react'
 import {connect} from 'react-redux'
 import '../../node_modules/font-awesome/css/font-awesome.min.css'
 import * as actions from '../actions/action'
-import {AppConstants} from "../constants/AppConstants";
 
 const Heading = ({widget}) => {
     return (
@@ -170,7 +169,7 @@ const List = () => {
     )
 };
 const dispatchToPropsMapper = dispatch => ({
-    changeWidget: (id, selectElement) => actions.changeWidget(id, selectElement, dispatch),
+    changeWidget: (id, selectElement) => (actions.changeWidget(id, selectElement, dispatch)),
     deleteWidget: (id) => (actions.deleteWidget(id, dispatch))
 });
 const stateToPropsMapper = (state, prevProps) => ({
@@ -189,19 +188,15 @@ const Widget = ({widget, changeWidget, deleteWidget, dispatch}) => {
                             </div>
                             <div className="col-md-6">
                                 <div className="d-inline-flex pr-2 float-right">
-                                    <button onClick={e => dispatch({
-                                        type: AppConstants.actions.widgets.DELETE,
-                                        id: widget.id
-                                    })}
+                                    <button onClick={() => {
+                                        deleteWidget(widget.id)
+                                    }}
                                             className="btn btn-danger"><i className="fa fa-times"></i></button>
                                 </div>
                                 <div className="d-inline-flex pr-2 float-right my-auto" style={{height: 37 + 'px'}}>
-                                    <select onChange={e => dispatch(
-                                        {
-                                            type: AppConstants.actions.widgets.SELECT_TYPE,
-                                            id: widget.id,
-                                            widgetType: selectElement.value
-                                        })}
+                                    <select onChange={() => {
+                                        changeWidget(widget.id, selectElement)
+                                    }}
                                             ref={node => selectElement = node} value={widget.widgetType}>
                                         <option>Heading</option>
                                         <option>List</option>
@@ -229,4 +224,4 @@ const Widget = ({widget, changeWidget, deleteWidget, dispatch}) => {
         </li>
     );
 };
-export const WidgetContainer = connect(stateToPropsMapper)(Widget);
+export const WidgetContainer = connect(stateToPropsMapper, dispatchToPropsMapper)(Widget);

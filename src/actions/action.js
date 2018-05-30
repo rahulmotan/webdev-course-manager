@@ -35,8 +35,9 @@ export const deleteWidget = (id, dispatch) => (
     dispatch({type: Constants.actions.widgets.DELETE, id: id})
 );
 
-export const changeWidget = (id, selectElement, dispatch) => ({
-    type: Constants.actions.widgets.SELECT_TYPE,
-    id: id,
-    widgetType: selectElement.value
-});
+export const changeWidget = (id, selectElement, dispatch) => (
+    dispatch({
+        type: Constants.actions.widgets.SELECT_TYPE,
+        id: id,
+        widgetType: selectElement.value
+    }));

@@ -31,7 +31,7 @@ export const widgetReducer = (state = {widgets: [], preview: false}, action) => 
             case Constants.actions.widgets.FIND_BY_TOPIC:
                 return {
                     widgets: [...action.widgets]
-                }
+                };
             default:
                 return state;
         }
