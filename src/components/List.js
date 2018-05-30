@@ -11,7 +11,7 @@ const dispatchToPropsMapper = dispatch => ({
 const stateToPropsMapper = (state) => ({
     preview: state.preview
 });
-const List = ({widget, changeListType, changeListItems, changeWidgetName}) => {
+const List = ({widget, preview, changeListType, changeListItems, changeWidgetName}) => {
     let selectElem, inputElem, textElem;
     let textItems = [];
     if (widget.listItems) {
@@ -19,40 +19,42 @@ const List = ({widget, changeListType, changeListItems, changeWidgetName}) => {
     }
     return (
         <div className="col-md-12">
-            <div className="row">
-                <div className="col-md-12">
-                    <div className="form-group">
+            <div hidden={preview}>
+                <div className="row">
+                    <div className="col-md-12">
+                        <div className="form-group">
                         <textarea className="form-control" id="headingText"
-                                  placeholder="Enter one list item per line" onChange={() => {
+                                  placeholder="Enter one list item per line" value={widget.listItems} onChange={() => {
                             changeListItems(widget.id, textElem.value)
                         }} ref={node => textElem = node}>
                         </textarea>
+                        </div>
+                    </div>
+                </div>
+                <div className="row">
+                    <div className="form-group col-md-12">
+                        <select className="form-control" value={widget.listType} onChange={() => {
+                            changeListType(widget.id, selectElem.value)
+                        }} ref={node => selectElem = node}>
+                            <option value="ordered">Ordered</option>
+                            <option value="unordered">Unordered</option>
+                        </select>
+                    </div>
+                </div>
+                <div className="row">
+                    <div className="col-md-12">
+                        <div className="form-group">
+                            <input type="text" value={widget.name} className="form-control" id="widgetName"
+                                   placeholder="Widget name" onChange={() => {
+                                changeWidgetName(widget.id, inputElem.value)
+                            }} ref={node => inputElem = node}/>
+                        </div>
                     </div>
                 </div>
             </div>
             <div className="row">
-                <div className="form-group col-md-12">
-                    <select className="form-control" value={widget.listType} onChange={() => {
-                        changeListType(widget.id, selectElem.value)
-                    }} ref={node => selectElem = node}>
-                        <option value="ordered">Ordered</option>
-                        <option value="unordered">Unordered</option>
-                    </select>
-                </div>
-            </div>
-            <div className="row">
                 <div className="col-md-12">
-                    <div className="form-group">
-                        <input type="text" className="form-control" id="widgetName"
-                               placeholder="Widget name" onChange={() => {
-                            changeWidgetName(widget.id, inputElem.value)
-                        }} ref={node => inputElem = node}/>
-                    </div>
-                </div>
-            </div>
-            <div className="row">
-                <div className="col-md-12">
-                    <h5>Preview</h5>
+                    <h5 hidden={preview}>Preview</h5>
                     {widget.listType == "ordered" &&
                     <ol>
                         {textItems.map(item => (

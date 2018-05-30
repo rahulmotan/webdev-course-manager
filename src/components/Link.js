@@ -12,45 +12,47 @@ const stateToPropsMapper = (state) => ({
     preview: state.preview
 });
 
-const Link = ({widget, changeLinkUrl, changeLinkText, changeWidgetName}) => {
+const Link = ({widget, preview, changeLinkUrl, changeLinkText, changeWidgetName}) => {
     let inputElem, linkElem, textElem;
     return (
         <div className="col-md-12">
-            <div className="row">
-                <div className="col-md-12">
-                    <div className="form-group">
-                        <input type="url" className="form-control" id="formGroupExampleInput"
-                               placeholder="Link goes here" onChange={() => {
-                            changeLinkUrl(widget.id, linkElem.value)
-                        }} ref={node => linkElem = node}/>
+            <div hidden={preview}>
+                <div className="row">
+                    <div className="col-md-12">
+                        <div className="form-group">
+                            <input type="url" className="form-control" id="formGroupExampleInput"
+                                   placeholder="Link goes here" value={widget.href} onChange={() => {
+                                changeLinkUrl(widget.id, linkElem.value)
+                            }} ref={node => linkElem = node}/>
+                        </div>
+                    </div>
+                </div>
+                <div className="row">
+                    <div className="col-md-12">
+                        <div className="form-group">
+                            <input type="text" className="form-control" id="linkName"
+                                   placeholder="Link text" value={widget.text} onChange={() => {
+                                changeLinkText(widget.id, textElem.value)
+                            }} ref={node => textElem = node}/>
+                        </div>
+                    </div>
+                </div>
+                <div className="row">
+                    <div className="col-md-12">
+                        <div className="form-group">
+                            <input type="text" className="form-control" id="widgetName"
+                                   placeholder="Widget name" value={widget.name} onChange={() => {
+                                changeWidgetName(widget.id, inputElem.value)
+                            }} ref={node => inputElem = node}/>
+                        </div>
                     </div>
                 </div>
             </div>
             <div className="row">
                 <div className="col-md-12">
                     <div className="form-group">
-                        <input type="text" className="form-control" id="linkName"
-                               placeholder="Link text" onChange={() => {
-                            changeLinkText(widget.id, textElem.value)
-                        }} ref={node => textElem = node}/>
-                    </div>
-                </div>
-            </div>
-            <div className="row">
-                <div className="col-md-12">
-                    <div className="form-group">
-                        <input type="text" className="form-control" id="widgetName"
-                               placeholder="Widget name" onChange={() => {
-                            changeWidgetName(widget.id, inputElem.value)
-                        }} ref={node => inputElem = node}/>
-                    </div>
-                </div>
-            </div>
-            <div className="row">
-                <div className="col-md-12">
-                    <div className="form-group">
-                        <h4>Preview</h4>
-                        {widget.href}
+                        <h4 hidden={preview}>Preview</h4>
+                        <a href={widget.href}>{widget.text}</a>
                     </div>
                 </div>
             </div>

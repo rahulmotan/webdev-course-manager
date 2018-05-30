@@ -7,7 +7,6 @@ export const AppConstants = {
             DELETE: 'DELETE',
             SELECT_TYPE: 'SELECT_TYPE',
             FIND_BY_TOPIC: 'FIND_BY_TOPIC',
-            PREV: 'PREVIEW',
             HEADING_SIZE: 'HEADING_SIZE',
             HEADING_TEXT: 'HEADING_TEXT',
             CHANGE_WIDGET_NAME: 'CHANGE_WIDGET_NAME',
@@ -17,6 +16,9 @@ export const AppConstants = {
             CHANGE_LIST_ITEMS: 'CHANGE_LIST_ITEMS',
             CHANGE_LINK_TEXT: 'CHANGE_LINK_TEXT',
             CHANGE_LINK: 'CHANGE_LINK',
+            PREVIEW: 'PREVIEW',
+            MOVE_UP: 'MOVE_UP',
+            MOVE_DOWN: 'MOVE_DOWN'
         }
     },
     uri: {

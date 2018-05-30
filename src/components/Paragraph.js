@@ -11,34 +11,36 @@ const stateToPropsMapper = (state) => ({
     preview: state.preview
 });
 
-const Paragraph = ({widget, changeParagraphText, changeWidgetName}) => {
+const Paragraph = ({widget, preview, changeParagraphText, changeWidgetName}) => {
     let inputElem, textElem;
     return (
         <div className="col-md-12">
-            <div className="row">
-                <div className="col-md-12">
-                    <div className="form-group">
+            <div hidden={preview}>
+                <div className="row">
+                    <div className="col-md-12">
+                        <div className="form-group">
                         <textarea type="text" className="form-control" id="pText"
-                                  placeholder="Paragraph text" onChange={() => {
+                                  placeholder="Paragraph text" value={widget.text} onChange={() => {
                             changeParagraphText(widget.id, textElem.value)
                         }} ref={node => textElem = node}></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div className="row">
+                    <div className="col-md-12">
+                        <div className="form-group">
+                            <input type="text" className="form-control" id="widgetName"
+                                   placeholder="Widget name" value={widget.name} onChange={() => {
+                                changeWidgetName(widget.id, inputElem.value)
+                            }} ref={node => inputElem = node}/>
+                        </div>
                     </div>
                 </div>
             </div>
             <div className="row">
                 <div className="col-md-12">
                     <div className="form-group">
-                        <input type="text" className="form-control" id="widgetName"
-                               placeholder="Widget name" onChange={() => {
-                            changeWidgetName(widget.id, inputElem.value)
-                        }} ref={node => inputElem = node}/>
-                    </div>
-                </div>
-            </div>
-            <div className="row">
-                <div className="col-md-12">
-                    <div className="form-group">
-                        <h4>Preview text</h4>
+                        <h4 hidden={preview}>Preview text</h4>
                         <p>{widget.text}</p>
                     </div>
                 </div>

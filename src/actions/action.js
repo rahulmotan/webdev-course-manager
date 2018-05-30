@@ -123,3 +123,25 @@ export const changeLinkText = (id, text, dispatch) => {
         text: text
     })
 };
+
+export const togglePreview = (dispatch) => {
+    dispatch({
+        type: Constants.actions.widgets.PREVIEW
+    })
+};
+
+export const moveUp = (id, widget, dispatch) => {
+    dispatch({
+        type: Constants.actions.widgets.MOVE_UP,
+        id: id,
+        widget: widget
+    })
+};
+
+export const moveDown = (id, widget, dispatch) => {
+    dispatch({
+        type: Constants.actions.widgets.MOVE_DOWN,
+        id: id,
+        widget: widget
+    })
+};

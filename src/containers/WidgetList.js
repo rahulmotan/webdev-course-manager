@@ -3,7 +3,6 @@ import {connect} from 'react-redux'
 import {WidgetContainer} from '../components/Widget'
 import '../../node_modules/font-awesome/css/font-awesome.css'
 import * as actions from "../actions/action";
-import {saveAllWidgets} from "../actions/action";
 
 let newId;
 const stateToPropertiesMapper = (state, prevData) => {
@@ -12,7 +11,8 @@ const stateToPropertiesMapper = (state, prevData) => {
         topicId: state.topicId,
         widgets: state.widgets,
         prevTopicId: prevData.topicId,
-        prevTopic: prevData.topic
+        prevTopic: prevData.topic,
+        previewMode: state.preview
     }
 };
 
@@ -22,7 +22,8 @@ const dispatcherToPropsMapper = dispatch => {
         findAllWidgets: () => (actions.findAllWidgets(dispatch)),
         addWidget: () => (actions.addWidget(dispatch)),
         findAllWidgetsByTopic: (topicId) => (actions.findAllWidgetsByTopic(dispatch, topicId)),
-        saveAllWidgets: (widgets, topicId) => (actions.saveAllWidgets(widgets, topicId, dispatch))
+        saveAllWidgets: (widgets, topicId) => (actions.saveAllWidgets(widgets, topicId, dispatch)),
+        togglePreview: () => (actions.togglePreview(dispatch))
     }
 };
 
@@ -36,8 +37,6 @@ class WidgetList extends React.Component {
             newId = newProps.prevTopicId;
             this.props.findAllWidgetsByTopic(newId);
         }
-
-
     }
 
     render() {
@@ -47,7 +46,9 @@ class WidgetList extends React.Component {
                     <div className="row flex-row-reverse pr-2 pb-3">
                         <div className="d-flex float-right my-auto">
                             <label className="switch m-auto">
-                                <input type="checkbox"/>
+                                <input type="checkbox" onClick={
+                                    this.props.togglePreview
+                                }/>
                                 <span className="slider round"></span>
                             </label>
                         </div>
@@ -55,8 +56,8 @@ class WidgetList extends React.Component {
                             <h5>Preview</h5>
                         </div>
                         <div className="d-flex pr-2">
-                            <button onClick={() => {
-                                saveAllWidgets(this.props.widgets, this.props.prevTopicId)
+                            <button hidden={this.props.previewMode} onClick={() => {
+                                this.props.saveAllWidgets(this.props.widgets, this.props.prevTopicId)
                             }} className="btn btn-success m-auto" type="button" name="save">
                                 <i className="fa fa-save pr-1"></i>Save
                             </button>
@@ -67,7 +68,7 @@ class WidgetList extends React.Component {
                 <ul className="list-group">
                     {
                         this.props.widgets.map(widget => (
-                            <WidgetContainer widget={widget} key={widget.id}/>
+                            <WidgetContainer widget={widget} key={widget.id} preview={this.props.previewMode}/>
                         ))
                     }
                 </ul>
