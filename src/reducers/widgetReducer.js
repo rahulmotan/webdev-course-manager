@@ -14,7 +14,8 @@ export const widgetReducer = (state = {widgets: [], preview: false}, action) => 
                         id: autoIncrementId + 3,
                         text: 'Heading Text',
                         widgetType: 'Heading',
-                        size: 1
+                        size: 1,
+                        listType: "ordered"
                     }]
                 };
 
