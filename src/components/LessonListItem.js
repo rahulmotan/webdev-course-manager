@@ -9,7 +9,7 @@ export default class LessonListItem
 
     render() {
         return (
-            <li className="list-group-item m-1 px-0 py-1">
+            <li className="list-group-item m-1 px-0 py-1 bg-secondary">
                 <span className="float-left pl-1"><Link
                     to={`/course/${this.props.courseId}/module/${this.props.moduleId}/lesson/${this.props.lesson.id}`}>
                     {this.props.lesson.title}</Link></span>

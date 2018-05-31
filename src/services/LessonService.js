@@ -1,5 +1,7 @@
-const LESSON_API_URL = 'http://localhost:8080/api/lesson';
-const LESSON_API_FIND_ALL_URL = 'http://localhost:8080/api/course/CID/module/MID/lesson';
+import {AppConstants as Constants} from "../constants/AppConstants";
+
+const LESSON_API_URL = Constants.uri.lesson.REMOTE_LESSON_API_URL;
+const LESSON_API_FIND_ALL_URL = Constants.uri.lesson.REMOTE_LESSON_API_FIND_ALL_URL;
 
 let _singleton = Symbol();
 
@@ -17,7 +19,7 @@ export default class LessonService {
     }
 
     findAllLessonsForModule(courseId, moduleId) {
-        return fetch(LESSON_API_FIND_ALL_URL.replace('CID',courseId).replace('MID', moduleId))
+        return fetch(LESSON_API_FIND_ALL_URL.replace('CID', courseId).replace('MID', moduleId))
             .then(function (response) {
                 return response.json();
             })

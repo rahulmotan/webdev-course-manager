@@ -1,5 +1,7 @@
+import {AppConstants as Constants} from "../constants/AppConstants";
+
 let _singleton = Symbol();
-const COURSE_API_URL = 'http://localhost:8080/api/course';
+const COURSE_API_URL = Constants.uri.course.REMOTE_COURSE_API_URL;
 
 class CourseService {
     constructor(singletonToken) {

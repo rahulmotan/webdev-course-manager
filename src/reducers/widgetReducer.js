@@ -149,7 +149,7 @@ export const widgetReducer = (state = {widgets: [], preview: false, unsaved: fal
                 });
                 newState.unsaved = true;
                 return newState;
-                
+
             case Constants.actions.widgets.PREVIEW: {
                 newState = Object.assign({}, state);
                 newState.preview = !state.preview;

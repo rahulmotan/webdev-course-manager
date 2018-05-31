@@ -9,7 +9,7 @@ export default class ModuleListItem
 
     render() {
         return (
-            <li className="list-group-item mb-3">
+            <li className="list-group-item mb-3 bg-secondary">
                 <Link to={`/course/${this.props.courseId}/module/${this.props.module.id}`}>
                     {this.props.module.title}
                 </Link>

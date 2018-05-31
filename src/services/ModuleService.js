@@ -1,5 +1,7 @@
-const MODULE_API_URL = 'http://localhost:8080/api/course/CID/module';
-const MODULE_URL = 'http://localhost:8080/api/module';
+import {AppConstants as Constants} from "../constants/AppConstants";
+
+const MODULE_API_URL = Constants.uri.module.REMOTE_MODULE_API_URL;
+const MODULE_URL = Constants.uri.module.REMOTE_MODULE_URL;
 
 let _singleton = Symbol();
 
@@ -38,7 +40,7 @@ export default class ModuleService {
     deleteModule(id) {
         return fetch(MODULE_URL + "/" + id, {
             method: 'DELETE'
-        }).then(function (response){
+        }).then(function (response) {
             return response;
         });
     }

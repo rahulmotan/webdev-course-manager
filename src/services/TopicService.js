@@ -1,5 +1,7 @@
-const TOPIC_API_URL = 'http://localhost:8080/api/lesson/LID/topic';
-const TOPIC_URL = 'http://localhost:8080/api/topic';
+import {AppConstants as Constants} from "../constants/AppConstants";
+
+const TOPIC_API_URL = Constants.uri.topic.REMOTE_TOPIC_API_URL;
+const TOPIC_URL = Constants.uri.topic.REMOTE_TOPIC_URL;
 
 let _singleton = Symbol();
 
