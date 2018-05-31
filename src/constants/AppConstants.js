@@ -39,8 +39,8 @@ export const AppConstants = {
         module: {
             LOCAL_MODULE_API_URL: 'http://localhost:8080/api/course/CID/module',
             LOCAL_MODULE_URL: 'http://localhost:8080/api/module',
-            REMOTE_MODULE_API_URL: 'https://summester-webdev.herokuapp.com',
-            REMOTE_MODULE_URL: 'https://summester-webdev.herokuapp.com'
+            REMOTE_MODULE_API_URL: 'https://summester-webdev.herokuapp.com/api/course/CID/module',
+            REMOTE_MODULE_URL: 'https://summester-webdev.herokuapp.com/api/module'
         },
         topic: {
             LOCAL_TOPIC_API_URL: 'http://localhost:8080/api/lesson/LID/topic',
