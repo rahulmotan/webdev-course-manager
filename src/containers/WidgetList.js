@@ -1,8 +1,8 @@
 import React from 'react'
-import {connect} from 'react-redux'
 import {WidgetContainer} from '../components/Widget'
 import '../../node_modules/font-awesome/css/font-awesome.css'
 import * as actions from "../actions/action";
+import {connect} from 'react-redux'
 
 let newId;
 const stateToPropertiesMapper = (state, prevData) => {
@@ -64,7 +64,12 @@ class WidgetList extends React.Component {
                         </div>
                     </div>
                 </div>
-                <button onClick={this.props.addWidget}>Add</button>
+                <div className="d-flex">
+                    <button className="btn btn-danger floating-add-widget"
+                            onClick={this.props.addWidget}>
+                        <i className="fa fa-plus-square fa-2x"></i>
+                    </button>
+                </div>
                 <ul className="list-group">
                     {
                         this.props.widgets.map(widget => (

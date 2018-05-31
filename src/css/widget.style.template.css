@@ -55,3 +55,10 @@ input:checked + .slider:before {
 .slider.round:before {
     border-radius: 50%;
 }
+
+.floating-add-widget {
+    position: fixed;
+    bottom: 1em;
+    right: 1em;
+    z-index: 100;
+}

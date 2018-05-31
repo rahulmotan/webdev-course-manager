@@ -1,5 +1,6 @@
 import {AppConstants as Constants} from "../constants/AppConstants";
 
+
 export const widgetReducer = (state = {widgets: [], preview: false}, action) => {
         let autoIncrementId = state.widgets.length * 10;
         let orderNumber = state.widgets.length;
@@ -49,6 +50,7 @@ export const widgetReducer = (state = {widgets: [], preview: false}, action) => 
             case Constants.actions.widgets.SAVE_ALL:
                 newState = Object.assign({}, state);
                 newState.widgets = action.widgets;
+                alert("Changes saved successfully :)");
                 return newState;
 
             case Constants.actions.widgets.HEADING_SIZE:

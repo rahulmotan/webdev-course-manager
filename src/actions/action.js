@@ -1,6 +1,11 @@
 import React from 'react'
 import {AppConstants as Constants} from "../constants/AppConstants";
 
+const validateWidgetNames = (widgets) => {
+    var array = widgets.map(widget => widget.name.trim());
+    return (new Set(array)).size !== array.length;
+};
+
 export const findAllWidgets = dispatch => {
     fetch(Constants.uri.widgets.LOCAL_HOST)
         .then(response => (response.json()))
@@ -20,19 +25,25 @@ export const findAllWidgetsByTopic = (dispatch, topicId) => (
         })))
 );
 
-export const saveAllWidgets = (widgets, topicId, dispatch) => (
-    fetch(Constants.uri.widgets.SAVE.replace('TID', topicId), {
-        method: 'POST',
-        body: JSON.stringify(widgets),
-        headers: {
-            'Content-Type': 'application/json'
-        }
-    }).then(response => (response.json()))
-        .then(widgets => (dispatch({
-            type: Constants.actions.widgets.FIND_BY_TOPIC,
-            widgets: widgets
-        })))
-);
+export const saveAllWidgets = (widgets, topicId, dispatch) => {
+    let redundant = validateWidgetNames(widgets);
+    if (!redundant) {
+        return fetch(Constants.uri.widgets.SAVE.replace('TID', topicId), {
+            method: 'POST',
+            body: JSON.stringify(widgets),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }).then(response => (response.json()))
+            .then(widgets => (dispatch({
+                type: Constants.actions.widgets.SAVE_ALL,
+                widgets: widgets
+            })))
+    } else {
+        alert("One or more widgets have the same name. Please verify");
+        return;
+    }
+};
 
 export const previewWidgets = dispatch => (
     dispatch({type: Constants.actions.widgets.PREV})
