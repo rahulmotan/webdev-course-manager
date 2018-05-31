@@ -17,7 +17,7 @@ export const findAllWidgets = dispatch => {
 };
 
 export const findAllWidgetsByTopic = (dispatch, topicId) => (
-    fetch(Constants.uri.widgets.FIND_ALL_OR_CREATE_BY_TOPIC_ID.replace('TID', topicId))
+    fetch(Constants.uri.widgets.REMOTE_FIND_ALL_OR_CREATE_BY_TOPIC_ID.replace('TID', topicId))
         .then(respone => (respone.json()))
         .then(widgets => (dispatch({
             type: Constants.actions.widgets.FIND_BY_TOPIC,
@@ -28,7 +28,7 @@ export const findAllWidgetsByTopic = (dispatch, topicId) => (
 export const saveAllWidgets = (widgets, topicId, dispatch) => {
     let redundant = validateWidgetNames(widgets);
     if (!redundant) {
-        return fetch(Constants.uri.widgets.SAVE.replace('TID', topicId), {
+        return fetch(Constants.uri.widgets.REMOTE_SAVE.replace('TID', topicId), {
             method: 'POST',
             body: JSON.stringify(widgets),
             headers: {

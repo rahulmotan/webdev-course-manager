@@ -28,7 +28,11 @@ export const AppConstants = {
             LOCAL_HOST: 'http://localhost:8080/api/widget',
             SAVE: 'http://localhost:8080/api/widget/save/TID',
             FIND_UPDATE_DELETE_WIDGET_BY_ID: 'http://localhost:8080/api/widget' + '/WID',
-            FIND_ALL_OR_CREATE_BY_TOPIC_ID: 'http://localhost:8080/api/topic/TID/widgets'
+            FIND_ALL_OR_CREATE_BY_TOPIC_ID: 'http://localhost:8080/api/topic/TID/widgets',
+            REMOTE_HOST: 'https://summester-webdev.herokuapp.com/api/widget',
+            REMOTE_SAVE: 'https://summester-webdev.herokuapp.com/api/widget/save/TID',
+            REMOTE_FIND_UPDATE_DELETE_WIDGET_BY_ID: 'https://summester-webdev.herokuapp.com/api/widget' + '/WID',
+            REMOTE_FIND_ALL_OR_CREATE_BY_TOPIC_ID: 'https://summester-webdev.herokuapp.com/api/topic/TID/widgets'
         },
         lesson: {
             LOCAL_LESSON_API_URL: 'http://localhost:8080/api/lesson',
