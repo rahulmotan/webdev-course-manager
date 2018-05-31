@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c22a54c8-40f0-4cc5-b2be-9221d5bf07d6" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/src/actions/action.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/actions/action.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/containers/WidgetList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/WidgetList.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/css/widget.style.template.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/css/widget.style.template.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/reducers/widgetReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducers/widgetReducer.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -19,11 +17,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="WidgetList.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="WidgetList.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/containers/WidgetList.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="316">
-              <caret line="69" column="60" selection-start-line="69" selection-start-column="60" selection-end-line="69" selection-end-column="60" />
+            <state relative-caret-position="-364">
+              <caret line="5" column="39" selection-start-line="5" selection-start-column="39" selection-end-line="5" selection-end-column="39" />
               <folding>
                 <element signature="e#0#25#0" expanded="true" />
               </folding>
@@ -55,15 +53,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="widget.style.template.css" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/css/widget.style.template.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="435">
-              <caret line="64" lean-forward="true" selection-start-line="64" selection-end-line="64" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="AppConstants.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/constants/AppConstants.js">
           <provider selected="true" editor-type-id="text-editor">
@@ -73,11 +62,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="widgetReducer.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="widgetReducer.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/reducers/widgetReducer.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1996">
-              <caret line="49" column="52" selection-start-line="49" selection-start-column="52" selection-end-line="49" selection-end-column="52" />
+            <state relative-caret-position="316">
+              <caret line="151" column="16" selection-start-line="151" selection-start-column="16" selection-end-line="151" selection-end-column="16" />
             </state>
           </provider>
         </entry>
@@ -188,10 +177,10 @@
         <option value="$PROJECT_DIR$/src/components/Widget.js" />
         <option value="$PROJECT_DIR$/src/containers/TopicTabs.js" />
         <option value="$PROJECT_DIR$/src/components/TopicListItem.js" />
-        <option value="$PROJECT_DIR$/src/reducers/widgetReducer.js" />
         <option value="$PROJECT_DIR$/src/actions/action.js" />
         <option value="$PROJECT_DIR$/src/css/widget.style.template.css" />
         <option value="$PROJECT_DIR$/src/containers/WidgetList.js" />
+        <option value="$PROJECT_DIR$/src/reducers/widgetReducer.js" />
       </list>
     </option>
   </component>
@@ -329,12 +318,12 @@
       <workItem from="1526938244264" duration="72368000" />
       <workItem from="1527095036814" duration="48334000" />
       <workItem from="1527450171900" duration="98143000" />
-      <workItem from="1527719524695" duration="5967000" />
+      <workItem from="1527719524695" duration="7997000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="224812000" />
+    <option name="totallyTimeSpent" value="226842000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1295" height="695" extended-state="6" />
@@ -745,13 +734,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/reducers/widgetReducer.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1996">
-          <caret line="49" column="52" selection-start-line="49" selection-start-column="52" selection-end-line="49" selection-end-column="52" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/css/widget.style.template.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="435">
@@ -761,11 +743,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/containers/WidgetList.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="316">
-          <caret line="69" column="60" selection-start-line="69" selection-start-column="60" selection-end-line="69" selection-end-column="60" />
+        <state relative-caret-position="-364">
+          <caret line="5" column="39" selection-start-line="5" selection-start-column="39" selection-end-line="5" selection-end-column="39" />
           <folding>
             <element signature="e#0#25#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/reducers/widgetReducer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="316">
+          <caret line="151" column="16" selection-start-line="151" selection-start-column="16" selection-end-line="151" selection-end-column="16" />
         </state>
       </provider>
     </entry>

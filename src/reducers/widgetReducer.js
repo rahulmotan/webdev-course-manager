@@ -1,7 +1,7 @@
 import {AppConstants as Constants} from "../constants/AppConstants";
 
 
-export const widgetReducer = (state = {widgets: [], preview: false}, action) => {
+export const widgetReducer = (state = {widgets: [], preview: false, unsaved: false}, action) => {
         let autoIncrementId = state.widgets.length * 10;
         let orderNumber = state.widgets.length;
         let newState;
@@ -21,6 +21,7 @@ export const widgetReducer = (state = {widgets: [], preview: false}, action) => 
                     listType: "ordered",
                     orderNumber: orderNumber
                 }];
+                newState.unsaved = true;
                 return newState;
 
             case Constants.actions.widgets.DELETE:
@@ -28,10 +29,10 @@ export const widgetReducer = (state = {widgets: [], preview: false}, action) => 
                 newState.widgets = newState.widgets.filter(widget => {
                     return widget.id !== action.id
                 });
+                newState.unsaved = true;
                 return newState;
 
             case Constants.actions.widgets.SELECT_TYPE :
-                console.log(action);
                 newState = {
                     widgets: state.widgets.filter((widget) => {
                         if (widget.id === action.id) {
@@ -40,6 +41,7 @@ export const widgetReducer = (state = {widgets: [], preview: false}, action) => 
                         return true;
                     })
                 };
+                newState.unsaved = true;
                 return JSON.parse(JSON.stringify(newState));
 
             case Constants.actions.widgets.FIND_BY_TOPIC:
@@ -50,6 +52,7 @@ export const widgetReducer = (state = {widgets: [], preview: false}, action) => 
             case Constants.actions.widgets.SAVE_ALL:
                 newState = Object.assign({}, state);
                 newState.widgets = action.widgets;
+                newState.unsaved = false;
                 alert("Changes saved successfully :)");
                 return newState;
 
@@ -61,6 +64,7 @@ export const widgetReducer = (state = {widgets: [], preview: false}, action) => 
                     }
                     return Object.assign({}, widget)
                 });
+                newState.unsaved = true;
                 return newState;
             case Constants.actions.widgets.HEADING_TEXT:
                 newState = Object.assign({}, state);
@@ -70,6 +74,7 @@ export const widgetReducer = (state = {widgets: [], preview: false}, action) => 
                     }
                     return Object.assign({}, widget)
                 });
+                newState.unsaved = true;
                 return newState;
             case Constants.actions.widgets.CHANGE_WIDGET_NAME:
                 newState = Object.assign({}, state);
@@ -79,6 +84,7 @@ export const widgetReducer = (state = {widgets: [], preview: false}, action) => 
                     }
                     return Object.assign({}, widget)
                 });
+                newState.unsaved = true;
                 return newState;
             case Constants.actions.widgets.CHANGE_IMAGE_LINK:
                 newState = Object.assign({}, state);
@@ -88,7 +94,9 @@ export const widgetReducer = (state = {widgets: [], preview: false}, action) => 
                     }
                     return Object.assign({}, widget)
                 });
+                newState.unsaved = true;
                 return newState;
+
             case Constants.actions.widgets.CHANGE_LINK_TEXT:
                 newState = Object.assign({}, state);
                 newState.widgets = newState.widgets.map(widget => {
@@ -97,7 +105,9 @@ export const widgetReducer = (state = {widgets: [], preview: false}, action) => 
                     }
                     return Object.assign({}, widget)
                 });
+                newState.unsaved = true;
                 return newState;
+
             case Constants.actions.widgets.CHANGE_LINK:
                 newState = Object.assign({}, state);
                 newState.widgets = newState.widgets.map(widget => {
@@ -106,6 +116,7 @@ export const widgetReducer = (state = {widgets: [], preview: false}, action) => 
                     }
                     return Object.assign({}, widget)
                 });
+                newState.unsaved = true;
                 return newState;
 
             case Constants.actions.widgets.CHANGE_PARAGRAPH_TEXT:
@@ -116,6 +127,7 @@ export const widgetReducer = (state = {widgets: [], preview: false}, action) => 
                     }
                     return Object.assign({}, widget)
                 });
+                newState.unsaved = true;
                 return newState;
             case Constants.actions.widgets.CHANGE_LIST_TYPE:
                 newState = Object.assign({}, state);
@@ -125,6 +137,7 @@ export const widgetReducer = (state = {widgets: [], preview: false}, action) => 
                     }
                     return Object.assign({}, widget)
                 });
+                newState.unsaved = true;
                 return newState;
             case Constants.actions.widgets.CHANGE_LIST_ITEMS:
                 newState = Object.assign({}, state);
@@ -134,10 +147,12 @@ export const widgetReducer = (state = {widgets: [], preview: false}, action) => 
                     }
                     return Object.assign({}, widget)
                 });
+                newState.unsaved = true;
                 return newState;
+                
             case Constants.actions.widgets.PREVIEW: {
                 newState = Object.assign({}, state);
-                newState.preview = !state.preview
+                newState.preview = !state.preview;
                 return newState
             }
             case Constants.actions.widgets.MOVE_DOWN: {
@@ -149,6 +164,7 @@ export const widgetReducer = (state = {widgets: [], preview: false}, action) => 
                     state.widgets[swapOrder + 1] = tempWidget;
                     state.widgets[swapOrder].orderNumber -= 1;
                     newState = Object.assign({}, state);
+                    newState.unsaved = true;
                     return JSON.parse(JSON.stringify(newState));
                 } else {
                     let w = state.widgets[swapOrder];
@@ -159,6 +175,7 @@ export const widgetReducer = (state = {widgets: [], preview: false}, action) => 
                         widget.orderNumber = otherIndex++;
                     });
                     newState = Object.assign({}, state);
+                    newState.unsaved = true;
                     return newState
                 }
             }
@@ -172,6 +189,7 @@ export const widgetReducer = (state = {widgets: [], preview: false}, action) => 
                     state.widgets[swapOrder - 1] = tempWidget;
                     state.widgets[swapOrder].orderNumber += 1;
                     newState = Object.assign({}, state);
+                    newState.unsaved = true;
                     return JSON.parse(JSON.stringify(newState));
                 } else {
                     let tempWidget = state.widgets[swapOrder];
@@ -182,10 +200,10 @@ export const widgetReducer = (state = {widgets: [], preview: false}, action) => 
 
                     });
                     newState = Object.assign({}, state);
+                    newState.unsaved = true;
                     return newState;
                 }
             }
-
             default:
                 return state;
         }

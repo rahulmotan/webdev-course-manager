@@ -3,6 +3,7 @@ import {WidgetContainer} from '../components/Widget'
 import '../../node_modules/font-awesome/css/font-awesome.css'
 import * as actions from "../actions/action";
 import {connect} from 'react-redux'
+import {Prompt} from 'react-router-dom'
 
 let newId;
 const stateToPropertiesMapper = (state, prevData) => {
@@ -12,7 +13,8 @@ const stateToPropertiesMapper = (state, prevData) => {
         widgets: state.widgets,
         prevTopicId: prevData.topicId,
         prevTopic: prevData.topic,
-        previewMode: state.preview
+        previewMode: state.preview,
+        unsaved: state.unsaved
     }
 };
 
@@ -42,6 +44,8 @@ class WidgetList extends React.Component {
     render() {
         return (
             <div>
+                <Prompt when={this.props.unsaved}
+                        message={"There are some unsaved changes. Are you sure you want to leave?"}/>
                 <div className="container pt-5 bg-light">
                     <div className="row flex-row-reverse pr-2 pb-3">
                         <div className="d-flex float-right my-auto">
